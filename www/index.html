@@ -208,7 +208,15 @@
                         jQuery('.pop-overlay').fadeOut();
 
                         jQuery('#audio-play').attr('src', play);
-                        jQuery('#audio-play').trigger("play");
+                        //jQuery('#audio-play').trigger("play");
+
+                        var myaudio = new Audio(play);
+                        myaudio.id = 'playerMyAdio';
+                        myaudio.play();
+
+                        var my_audio = new Media(play);
+                        my_audio.id = 'player_MyAdio';
+                        my_audio.play();
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
