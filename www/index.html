@@ -133,10 +133,7 @@
             jQuery('.stop').click(function() {
                 jQuery('.play').show();
                 jQuery('.stop').hide();
-                //jQuery('#audio-play').trigger("pause");
-
-                my_media.play();
-
+                jQuery('#audio-play').trigger("pause");
                 jQuery('.play-data-name').text('');
                 jQuery('.play-data-song').text('');
                 jQuery('.play-data-presenter').text('');
@@ -211,10 +208,7 @@
                         jQuery('.pop-overlay').fadeOut();
 
                         jQuery('#audio-play').attr('src', play);
-                        //jQuery('#audio-play').trigger("play");
-
-                        var my_media = new Media(play,function () {},function (err) {});
-                        my_media.play();
+                        jQuery('#audio-play').trigger("play");
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
