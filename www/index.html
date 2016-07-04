@@ -134,7 +134,7 @@
                 jQuery('.play').show();
                 jQuery('.stop').hide();
                 jQuery('#audio-play').trigger("pause");
-                //my_audio.stop();
+                my_audio.stop();
                 jQuery('.play-data-name').text('');
                 jQuery('.play-data-song').text('');
                 jQuery('.play-data-presenter').text('');
@@ -209,13 +209,11 @@
                         jQuery('.pop-overlay').fadeOut();
 
                         jQuery('#audio-play').attr('src', play);
-                        jQuery('#audio-play').trigger("play");
+                        //jQuery('#audio-play').trigger("play");
 
                         var my_audio = new Audio(play);
                         my_audio.id = 'player_MyAdio';
                         my_audio.play();
-
-                        
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
