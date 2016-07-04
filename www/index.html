@@ -129,20 +129,6 @@
                 jQuery('.pop-overlay').fadeIn();
             });
 
-            // stop
-            jQuery('.stop').click(function() {
-                jQuery('.play').show();
-                jQuery('.stop').hide();
-                jQuery('#audio-play').trigger("pause");
-                my_audio.stop();
-                jQuery('.play-data-name').text('');
-                jQuery('.play-data-song').text('');
-                jQuery('.play-data-presenter').text('');
-                jQuery('.player-txt').text("LUISTER NAAR DECIBEL");
-                clearInterval(currentsong);
-                clearInterval(currentpresenter);
-            }); 
-
             // info
             jQuery('#info-open').click(function() {
                 jQuery('.info-pop').addClass('active');
@@ -211,10 +197,6 @@
                         jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
 
-                        var my_audio = new Audio(play);
-                        my_audio.id = 'player_MyAdio';
-                        my_audio.play();
-
                         jQuery('.play').hide();
                         jQuery('.stop').show();
                         jQuery('.player-txt').text("JE LUISTERD NAAR");
@@ -264,6 +246,25 @@
                                 });
                             }, 5000);
                         }
+
+                        media = new Media(play);
+                        media.id = 'media';
+                        media.play();
+
+                    });
+
+                    // stop
+                    jQuery('.stop').click(function() {
+                        jQuery('.play').show();
+                        jQuery('.stop').hide();
+                        jQuery('#audio-play').trigger("pause");
+                        media.stop();
+                        jQuery('.play-data-name').text('');
+                        jQuery('.play-data-song').text('');
+                        jQuery('.play-data-presenter').text('');
+                        jQuery('.player-txt').text("LUISTER NAAR DECIBEL");
+                        clearInterval(currentsong);
+                        clearInterval(currentpresenter);
                     });
                 }
             });

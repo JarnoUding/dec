@@ -92,8 +92,8 @@
     </platform>
     <access origin="*" />
     <feature name="BackgroundAudio">
-      <param name="ios-package" value="BackgroundAudio" />
-      <param name="onload" value="true" />
+        <param name="ios-package" value="BackgroundAudio" />
+        <param name="onload" value="true" />
     </feature>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -108,4 +108,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <engine name="browser" spec="~4.0.0" />
 </widget>
