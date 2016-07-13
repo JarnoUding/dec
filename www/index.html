@@ -198,7 +198,7 @@
                         //jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
 
-                        myMedia = new Media(play, onSuccess, onError);
+                        myMedia = new Audio(play);
                         myMedia.play({ playAudioWhenScreenIsLocked: true });
 
                         jQuery('.play').hide();
@@ -279,16 +279,16 @@
 
         // onSuccess Callback
         //
-        function onSuccess() {
-            alert("success");
-        }
+        // function onSuccess() {
+        //     alert("success");
+        // }
 
-        // onError Callback 
-        //
-        function onError(error) {
-            alert('code: '    + error.code    + '\n' + 
-                  'message: ' + error.message + '\n');
-        }
+        // // onError Callback 
+        // //
+        // function onError(error) {
+        //     alert('code: '    + error.code    + '\n' + 
+        //           'message: ' + error.message + '\n');
+        // }
   
     </script>
 </body>
