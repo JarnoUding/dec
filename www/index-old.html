@@ -195,7 +195,7 @@
                         jQuery('.pop-overlay').fadeOut();
 
                         jQuery('#audio-play').attr('src', play);
-                        jQuery('#audio-play').trigger("play");
+                        //jQuery('#audio-play').trigger("play");
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
@@ -247,9 +247,9 @@
                             }, 5000);
                         }
 
-                        //media = new Media(play);
-                        //media.id = 'media';
-                        //media.play();
+                        media = new Media(play);
+                        media.id = 'media';
+                        media.play({playAudioWhenScreenIsLocked:false});
 
                     });
 
@@ -258,7 +258,7 @@
                         jQuery('.play').show();
                         jQuery('.stop').hide();
                         jQuery('#audio-play').trigger("pause");
-                        //media.stop();
+                        media.stop();
                         jQuery('.play-data-name').text('');
                         jQuery('.play-data-song').text('');
                         jQuery('.play-data-presenter').text('');

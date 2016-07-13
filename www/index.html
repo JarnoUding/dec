@@ -47,7 +47,7 @@
     
     <div class="container-fluid">
         <div class="col-xs-12">
-            <div class="pull-right m-b m-t"><a id="info-open" href="#">INFO</a></div>
+            <div class="pull-right m-b" style="padding-top: 24px;" ><a id="info-open" href="#">INFO</a></div>
         </div>
         
         <div class="col-xs-12 logo-container">
@@ -106,7 +106,7 @@
     </div>
 
     <div class="info-pop">
-        <div class="close-bar"><a class="info-close" href="#">SLUITEN</a></div>
+        <div class="close-bar" style="padding-top: 24px;"><a class="info-close" href="#">SLUITEN</a></div>
         <p class="info-content">
             Radio Decibel is de grootste nationale en commerciële radiozender van Nederland. Met een uniek format waarin uptempo en positieve Rewind Hits uit de 80's en 90's en zero's worden afgewisseld met de hits van nu. Radio Decibel is via het ether te ontvangen in Noord-Holland op FM 98.0 / FM 98.3, in Zuid-Holland via FM 97.6, Utrecht via FM 98.5 en in Groot-Eindhoven op FM 93.2
         </p>
@@ -194,7 +194,10 @@
                         presenter = jQuery(this).attr("presenter-data");
                         jQuery('.pop-overlay').fadeOut();
 
-                        jQuery('#audio-play').attr('src', play);
+                        // PLAY MEDIA
+                        myMedia = new Media(play);
+                        myMedia.play({ playAudioWhenScreenIsLocked : true });
+                        //jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
 
                         jQuery('.play').hide();
@@ -247,24 +250,24 @@
                             }, 5000);
                         }
 
-                        media = new Media(play);
-                        media.id = 'media';
-                        media.play({playAudioWhenScreenIsLocked:false});
+                        // stop
+                        jQuery('.stop').click(function() {
+                            jQuery('.play').show();
+                            jQuery('.stop').hide();
 
-                    });
+                            // STOP
+                            //jQuery('#audio-play').trigger("pause");
+                            myMedia.stop();
 
-                    // stop
-                    jQuery('.stop').click(function() {
-                        jQuery('.play').show();
-                        jQuery('.stop').hide();
-                        jQuery('#audio-play').trigger("pause");
-                        media.stop();
-                        jQuery('.play-data-name').text('');
-                        jQuery('.play-data-song').text('');
-                        jQuery('.play-data-presenter').text('');
-                        jQuery('.player-txt').text("LUISTER NAAR DECIBEL");
-                        clearInterval(currentsong);
-                        clearInterval(currentpresenter);
+
+                            jQuery('.play-data-name').text('');
+                            jQuery('.play-data-song').text('');
+                            jQuery('.play-data-presenter').text('');
+                            jQuery('.player-txt').text("LUISTER NAAR DECIBEL");
+                            clearInterval(currentsong);
+                            clearInterval(currentpresenter);
+                        }); 
+
                     });
                 }
             });
