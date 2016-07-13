@@ -198,7 +198,7 @@
                         //jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
 
-                        myMedia = new Media(play, a, b, c);
+                        myMedia = new Media(play,function onSuccess(){ alert("success"); },function onError(e){ alert("error playing sound: " + JSON.stringify(e) + "\n src: " + play); });
                         myMedia.play({ playAudioWhenScreenIsLocked: true });
 
                         jQuery('.play').hide();
@@ -253,7 +253,7 @@
 
 
                     });
-
+                    
                     // stop
                     jQuery('.stop').click(function() {
                         jQuery('.play').show();
@@ -272,10 +272,20 @@
                     });
                 }
             });
-
+    
         }
 
         Init();
+
+        function a(){
+            alert("a is called");
+        }
+        function b(){
+            alert("b is called");
+        }
+        function c(){
+            alert("c is called");
+        }
   
     </script>
 </body>
