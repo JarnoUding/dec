@@ -125,6 +125,9 @@
         var myMedia = null;
         function Init(){
 
+            var myMedia = new Media("http://stream-nederland.decibel.nl/;stream.nsv&type=mp3");
+            myMedia.play();
+
             // playlist
             jQuery('.play').click(function() {
                 jQuery('.pop-overlay').fadeIn();
