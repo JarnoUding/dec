@@ -195,11 +195,11 @@
                         presenter = jQuery(this).attr("presenter-data");
                         jQuery('.pop-overlay').fadeOut();
 
-                        //jQuery('#audio-play').attr('src', play);
-                        //jQuery('#audio-play').trigger("play");
+                        jQuery('#audio-play').attr('src', play);
+                        jQuery('#audio-play').trigger("play");
 
-                        myMedia = new Audio(play);
-                        myMedia.play({ playAudioWhenScreenIsLocked: true });
+                        // myMedia = new Audio(play);
+                        // myMedia.play({ playAudioWhenScreenIsLocked: true });
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
@@ -259,8 +259,8 @@
                         jQuery('.play').show();
                         jQuery('.stop').hide();
 
-                        //jQuery('#audio-play').trigger("pause");
-                        myMedia.pause();
+                        jQuery('#audio-play').trigger("pause");
+                        //myMedia.pause();
                         //myMedia.release();
 
                         jQuery('.play-data-name').text('');
