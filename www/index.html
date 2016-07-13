@@ -125,9 +125,6 @@
         var myMedia = null;
         function Init(){
 
-            var myMedia = new Media("http://stream-nederland.decibel.nl/;stream.nsv&type=mp3");
-            myMedia.play();
-
             // playlist
             jQuery('.play').click(function() {
                 jQuery('.pop-overlay').fadeIn();
@@ -201,7 +198,7 @@
                         //jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
 
-                        myMedia = new Media(play);
+                        myMedia = new Media(play, a, b, c);
                         myMedia.play({ playAudioWhenScreenIsLocked: true });
 
                         jQuery('.play').hide();
