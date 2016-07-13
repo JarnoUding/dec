@@ -194,8 +194,11 @@
                         presenter = jQuery(this).attr("presenter-data");
                         jQuery('.pop-overlay').fadeOut();
 
-                        jQuery('#audio-play').attr('src', play);
+                        //jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
+
+                        myMedia = new Media(play);
+                        myMedia.play({ playAudioWhenScreenIsLocked: true });
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
@@ -247,9 +250,6 @@
                             }, 5000);
                         }
 
-                        media = new Media(play);
-                        media.id = 'media';
-                        media.play({playAudioWhenScreenIsLocked:false});
 
                     });
 
@@ -257,8 +257,11 @@
                     jQuery('.stop').click(function() {
                         jQuery('.play').show();
                         jQuery('.stop').hide();
-                        jQuery('#audio-play').trigger("pause");
-                        media.stop();
+
+                        //jQuery('#audio-play').trigger("pause");
+                        myMedia.stop();
+                        myMedia.release();
+
                         jQuery('.play-data-name').text('');
                         jQuery('.play-data-song').text('');
                         jQuery('.play-data-presenter').text('');
