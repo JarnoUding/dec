@@ -122,6 +122,7 @@
     <script type="text/javascript">
         app.initialize();
 
+        var myMedia = null;
         function Init(){
 
             // playlist
@@ -197,7 +198,7 @@
                         //jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
 
-                        myMedia = new Media(play);
+                        myMedia = new Audio(play);
                         myMedia.play({ playAudioWhenScreenIsLocked: true });
 
                         jQuery('.play').hide();
