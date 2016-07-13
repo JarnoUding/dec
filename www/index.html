@@ -185,7 +185,7 @@
                         //jQuery('#audio-play').trigger("play");
 
                         myMedia = new Media(play);
-                        myMedia.play();
+                        myMedia.play({ playAudioWhenScreenIsLocked : true });
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
