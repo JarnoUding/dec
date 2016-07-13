@@ -108,7 +108,7 @@ body{
 	bottom: 0;
 }
 .channel-img{
-	max-width: 60px;
+	max-width: 36px;
 	margin-right: 6px;
 }
 .pop-container-inner{
@@ -126,6 +126,7 @@ body{
 	padding: 6px;
 	float: left;
 	width: 100%;
+	font-size: 12px;
 }
 .play-item .pull-left{
 	padding: 6px;
