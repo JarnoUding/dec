@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--
     Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -8,7 +9,9 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
+
     http://www.apache.org/licenses/LICENSE-2.0
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -44,7 +47,7 @@
     
     <div class="container-fluid">
         <div class="col-xs-12">
-            <div class="pull-right m-b m-t"><a id="info-open" href="#">INFO</a></div>
+            <div class="pull-right m-b" style="padding-top: 24px;"><a id="info-open" href="#">INFO</a></div>
         </div>
         
         <div class="col-xs-12 logo-container">
@@ -90,6 +93,7 @@
                         <div class="pull-left"><img class="channel-img" src="img/logo.png"> DECIBEL</div>
                         <div class="pull-right"><img play-data="http://stream-nederland.decibel.nl/;stream.nsv&type=mp3" name-data="Decibel Nederland" song-data="http://stream-nederland.decibel.nl/currentsong?sid=1" class="player-btn" src="img/pop-play.png"></div>
                     </div>
+
                     <div class="play-item">
                         <div class="pull-left"><img  class="channel-img" src="img/logo.png"> DECIBEL</div>
                         <div class="pull-right"><img play-data="http://stream-nederland.decibel.nl/;stream.nsv&type=mp3" name-data="Decibel Nederland" song-data="http://stream-nederland.decibel.nl/currentsong?sid=1" class="player-btn" src="img/pop-play.png"></div>
@@ -102,7 +106,7 @@
     </div>
 
     <div class="info-pop">
-        <div class="close-bar"><a class="info-close" href="#">SLUITEN</a></div>
+        <div class="close-bar" style="padding-top: 24px;"><a class="info-close" href="#">SLUITEN</a></div>
         <p class="info-content">
             Radio Decibel is de grootste nationale en commerciële radiozender van Nederland. Met een uniek format waarin uptempo en positieve Rewind Hits uit de 80's en 90's en zero's worden afgewisseld met de hits van nu. Radio Decibel is via het ether te ontvangen in Noord-Holland op FM 98.0 / FM 98.3, in Zuid-Holland via FM 97.6, Utrecht via FM 98.5 en in Groot-Eindhoven op FM 93.2
         </p>
@@ -117,16 +121,20 @@
     
     <script type="text/javascript">
         app.initialize();
+
         function Init(){
+
             // playlist
             jQuery('.play').click(function() {
                 jQuery('.pop-overlay').fadeIn();
             });
+
             // info
             jQuery('#info-open').click(function() {
                 jQuery('.info-pop').addClass('active');
             });
             
+
             // messenger
             jQuery('.message-btn').click(function(){
                 jQuery('.messenger-pop').addClass('active');
@@ -136,6 +144,7 @@
                 jQuery('.info-pop').removeClass('active');
                 jQuery('.messenger-pop').removeClass('active');
             }); 
+
             // send message
             jQuery('#mailform').submit(function () {
                 name = jQuery('#message-name').val();
@@ -151,11 +160,13 @@
                         jQuery('.message-btn').addClass('thank');
                         jQuery('.message-btn p').text("Bericht verzonden");
                         jQuery('.message-btn img').attr("src", "img/thanks.png");
+
                         changeback = setInterval(function() {
                             jQuery('.message-btn p').text("Stuur een bericht");
                             jQuery('.message-btn img').attr("src", "img/messenger.png");
                             clearInterval(changeback);
                         }, 5000);
+
                         jQuery('#message-text').val("");
                     }
                 });
@@ -169,10 +180,12 @@
                 type: 'GET',
                 dataType: 'JSON',
                 success: function (data) {
+
                  // get channels
                   jQuery.each( data, function( key, val ) {
                     jQuery('.pop-container-inner').append("<div class='play-item'><div class='pull-left'><img class='channel-img' src='"+val.image+"'> "+val.name+"</div><div class='pull-right'><img play-data='"+val.channel+"' id='"+key+"' presenter-data='"+val.presenter+"' name-data='"+val.name+"' song-data='"+val.current+"' class='player-btn' src='img/pop-play.png'></div></div>");
                   });
+
                     // play function
                     jQuery('.player-btn').click(function() {
                         play = jQuery(this).attr("play-data");
@@ -181,17 +194,16 @@
                         presenter = jQuery(this).attr("presenter-data");
                         jQuery('.pop-overlay').fadeOut();
 
-                        //jQuery('#audio-play').attr('src', play);
+                        jQuery('#audio-play').attr('src', play);
                         //jQuery('#audio-play').trigger("play");
-
-                        myMedia = new Media(play);
-                        myMedia.play({ playAudioWhenScreenIsLocked : true });
 
                         jQuery('.play').hide();
                         jQuery('.stop').show();
                         jQuery('.player-txt').text("JE LUISTERD NAAR");
+
                         // set name
                         jQuery('.play-data-name').text(name);
+
                         // set presenter
                         if(presenter !== "-"){
                             // current name & song
@@ -201,6 +213,7 @@
                             }).done(function(data) {
                                 jQuery('.play-data-presenter').text(data);
                             });
+
                             // current name & song interval
                             currentpresenter = setInterval(function() {
                                 jQuery.ajax({
@@ -211,6 +224,7 @@
                                 });
                             }, 5000);
                         }
+
                         // set song
                         if(song !== "-"){
                             // current name & song
@@ -221,6 +235,7 @@
                                 txt = "";
                                 jQuery('.play-data-song').text("-\n"+ data);
                             });
+
                             // current name & song interval
                             currentsong = setInterval(function() {
                                 jQuery.ajax({
@@ -231,19 +246,19 @@
                                 });
                             }, 5000);
                         }
-                        //media = new Media(play);
-                        //media.id = 'media';
-                        //media.play();
+
+                        media = new Media(play);
+                        media.id = 'media';
+                        media.play({playAudioWhenScreenIsLocked:false});
+
                     });
+
                     // stop
                     jQuery('.stop').click(function() {
                         jQuery('.play').show();
                         jQuery('.stop').hide();
-
-                        //jQuery('#audio-play').trigger("pause");
-                        myMedia.stop();
-                        myMedia.release();
-
+                        jQuery('#audio-play').trigger("pause");
+                        media.stop();
                         jQuery('.play-data-name').text('');
                         jQuery('.play-data-song').text('');
                         jQuery('.play-data-presenter').text('');
@@ -253,7 +268,9 @@
                     });
                 }
             });
+
         }
+
         Init();
   
     </script>
